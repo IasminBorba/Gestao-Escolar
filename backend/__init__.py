@@ -1,0 +1,1 @@
+p_config = 'backend.apps.BackendConfig'
