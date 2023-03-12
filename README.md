@@ -1,47 +1,53 @@
-
-
-<br>
 <div align="center">
-  <p>
-    <img alt="logo" src="./img/logo.png" height="200" />
-  </p>
 
-# Título do Projeto
+# 📚 Gestão Escolar 
 
 </div>
 
 <p align="center">
-  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/{seu_user_github}/{nome_repositorio}" />
-  <img alt="License" src="https://img.shields.io/github/license/{seu_user_github}/{nome_repositorio}" />
-  <a href="https://github.com/{seu_user_github}" target="_blank"><img alt="Follow Me" src="https://img.shields.io/github/followers/{seu_user_github}.svg?style=social&label=Follow&maxAge=2592000" /></a>
+  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/IasminBorba/Gestao-Escolar" />
+  <img alt="License" src="https://img.shields.io/github/license/IasminBorba/Gestao-Escolar" />
+  <a href="https://github.com/IasminBorba" target="_blank"><img alt="Follow Me" src="https://img.shields.io/github/followers/IasminBorba.svg?style=social&label=Follow&maxAge=2592000" /></a>
 </p>
 
 ---
 
-## 🌎 Tópico (ex: Sobre o projeto, Tecnologias, Requisitos, Modo de uso, Documentação da API, Licença, Testado em)
-
-Esse projeto tal tal tal...
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies tincidunt, nisl nisl aliquet nisl, eget aliquam nunc nisl eget nisl. Donec auctor, nisl eget ultricies tincidunt, nisl nisl aliquet nisl, eget aliquam nunc nisl eget nisl.
-
+## ⚙️ Modo de uso
 <br>
 
--   [/admin](http://localhost:8000/admin)<br>
--   [/api/ufs](http://localhost:8000/api/ufs)<br>
--   [/api/cidades](http://localhost:8000/api/cidades)<br>
--   [/api/enderecos](http://localhost:8000/api/enderecos)<br>
--   [/api/pessoas](http://localhost:8000/api/pessoas)<br>
--   [/api/ocorrencias](http://localhost:8000/api/ocorrencias)<br>
--   [/api/contas](http://localhost:8000/api/contas)<br>
--   [/api/users](http://localhost:8000/api/users)
+Antes de mais nada, para executar o projeto, é necessário que você crie seu ambiente virtual:
+
+```sh
+python -m venv env
+```
+
+Com o env definido, você precisa instalar as dependências (exemplo no ``dependencias.txt``):
+
+```sh
+source env/bin/activate
+pip install -r dependencias.txt
+```
+
+Depois de instalar as dependências, basta executar ``python manage.py runserver``
+
+(Embora você precise migrar usando: ``python manage.py migrate`` para ver o admin e criar um superusuário para entrar no admin: ``python manage.py createsuperuser``)
 
 <br>
 
 ---
 
-## 🛠 Outro tópico (lembre-se de mudar o emoji, da o charme)
+## 📑 Documentação da API
+<br>
 
--   Tópico 1
--   Tópico 2
--   Tópico 3
+-   Admin: [/admin](http://localhost:8000/admin)
+-   Alunos: [/api/alunos](http://localhost:8000/api/alunos/)
+-   Professores: [/api/professores](http://localhost:8000/api/professores/)
+-   Disciplinas: [/api/disciplinas](http://localhost:8000/api/disciplinas/)
+-   Plano de aula: [/api/plano_de_aula](http://localhost:8000/api/plano_de_aula/)
+-   Atividades: [/api/atividades](http://localhost:8000/api/atividades/)
+-   Atividade Aluno: [/api/atividade_aluno](http://localhost:8000/api/atividade_aluno/)
+-   Disciplina Aluno[/api/disciplina_aluno](http://localhost:8000/api/disciplina_aluno/)
+-   Frequência: [/api/frequencia](http://localhost:8000/api/frequencia/)
+-   Frequência Aluno: [/api/frequencia_aluno](http://localhost:8000/api/frequencia_aluno/)
 
 ---
