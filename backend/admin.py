@@ -49,7 +49,11 @@ class AtividadeAlunoForm(admin.ModelAdmin):
     def atividade(self, instance):
         return instance.id_atividade.atividade
 
-    list_display = ['nome','atividade','nota']
+    def materia(self, instance):
+        return instance.id_atividade.id_disciplina.nome
+
+    list_display = ['nome','atividade','nota','materia']
+    list_filter = ['id_atividade__id_disciplina__nome']
     ordering = ['id_aluno__nome']
     search_fields = ['id_atividade, id_aluno']
 

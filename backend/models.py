@@ -112,7 +112,7 @@ class DisciplinaAluno(models.Model):
     id_matricula = models.AutoField(primary_key=True)
     id_aluno = models.ForeignKey("backend.Alunos", on_delete=models.CASCADE)
     id_disciplina = models.ForeignKey("backend.Disciplinas", on_delete=models.CASCADE)
-    nota = models.FloatField(default=0.0, null=True, blank=True) 
+    nota = models.FloatField(default=0.0, null=True, blank=True, editable=False) 
 
     class Meta:
         db_table = "DisciplinaAluno"

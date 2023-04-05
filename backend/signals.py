@@ -13,8 +13,8 @@ def adiciona_atividade(sender, instance, **kwargs):
     for atv in atividades:
         nota += atv.nota
 
-    disciplina.nota = nota
-    disciplina.save()
+    relacao.nota = nota
+    relacao.save()
 
 
 @receiver(post_delete, sender=AtividadeAluno)
@@ -28,5 +28,5 @@ def deleta_atividade(sender, instance, **kwargs):
     for atv in atividades:
         nota += atv.nota
 
-    disciplina.nota = nota
-    disciplina.save()
+    relacao.nota = nota
+    relacao.save()
