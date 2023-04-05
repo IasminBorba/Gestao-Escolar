@@ -3,93 +3,92 @@ from django.contrib import admin
 from .models import *
 
 class AlunosForm(admin.ModelAdmin):
-    list_display = ['nome','matricula']
+    list_display = ['matricula','nome','email','telefone']
     ordering = ['nome']
-    search_fields = ['nome']
+    search_fields = ['nome','matricula']
 
 
 class ProfessoresForm(admin.ModelAdmin):
-    list_display = ['nome','codigo']
+    list_display = ['nome','email','telefone']
     ordering = ['nome']
     search_fields = ['nome']
 
 
 class DisciplinasForm(admin.ModelAdmin):
-    def estado(self, instance):
-        return instance.id_professor.nome
     
-    list_display = ['codigo','nome', 'id_professor']
+    list_display = ['nome','id_professor','carga_horaria']
     list_filter = ['id_professor']
     ordering = ['nome']
-    search_fields = ['nome']
+    search_fields = ['nome','id_professor__nome']
 
 
 class PlanoAulaForm(admin.ModelAdmin):
-    def estado(self, instance):
+    def disciplina(self, instance):
         return instance.id_disciplina.nome
 
-    list_display = ['id_disciplina', 'tema_aula', 'metodo']
+    list_display = ['disciplina','tema_aula','metodo']
     list_filter = ['metodo']
-    ordering = ['id_disciplina']
+    ordering = ['id_disciplina__nome']
     search_fields = ['tema_aula']
 
 
 class AtividadesForm(admin.ModelAdmin):
-    def estado(self, instance):
+    def disciplina(self, instance):
         return instance.id_disciplina.nome
 
-    list_display = ['id_disciplina', 'atividade', 'tipo']
+    list_display = ['disciplina','atividade','tipo']
     list_filter = ['tipo']
-    ordering = ['id_disciplina']
+    ordering = ['id_disciplina__nome']
     search_fields = ['atividade']
 
 
 class AtividadeAlunoForm(admin.ModelAdmin):
-    def estado(self, instance):
+    def nome(self, instance):
         return instance.id_aluno.nome
 
-    def estado(self, instance):
+    def atividade(self, instance):
         return instance.id_atividade.atividade
 
-    list_display = ['id_aluno', 'id_atividade', 'nota']
-    ordering = ['id_aluno']
-    search_fields = ['id_atividade']
+    list_display = ['nome','atividade','nota']
+    ordering = ['id_aluno__nome']
+    search_fields = ['id_atividade, id_aluno']
 
 
 class DisciplinaAlunoForm (admin.ModelAdmin):
-    def estado(self, instance):
+    def nome(self, instance):
         return instance.id_aluno.nome
     
-    def estado(self, instance):
+    def disciplina(self, instance):
         return instance.id_disciplina.nome
 
-    list_display = ['id_aluno', 'id_disciplina', 'nota']
-    list_filter = ['id_disciplina']
-    ordering = ['id_aluno']
-    search_fields = ['id_aluno']
+    list_display = ['nome','disciplina','nota']
+    list_filter = ['id_disciplina__nome']
+    ordering = ['id_disciplina__nome']
+    search_fields = ['nome']
 
 
 class FrequenciaForm(admin.ModelAdmin):
-    def estado(self, instance):
+
+    def materia(self, instance): 
         return instance.id_materia.nome
 
-    list_display = ['id_materia','dia']
-    list_filter = ['id_materia']
+    list_display = ['materia','dia']
+    list_filter = ['id_materia__nome']
     ordering = ['dia']
-    search_fields = ['id_materia']
+    search_fields = ['materia']
 
 
 class FrequenciaAlunoForm(admin.ModelAdmin):
-    def estado(self, instance):
+    def aluno(self, instance): 
         return instance.id_aluno.nome
     
-    def estado(self, instance):
+    def data(self, instance):
         return instance.id_frequencia.dia
 
-    list_display = ['id_aluno', 'id_frequencia', 'presenca']
-    list_filter = ['id_frequencia']
-    ordering = ['id_frequencia']
-    search_fields = ['id_aluno']
+    list_display = ['aluno','data','presenca']
+    list_filter = ['id_frequencia__id_materia__nome','id_aluno__nome']
+    ordering = ['id_frequencia__dia']
+    search_fields = ['aluno']
 
 
 admin.site.register(Alunos, AlunosForm)
