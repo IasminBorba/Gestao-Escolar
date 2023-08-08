@@ -1,9 +1,15 @@
 from django.db import models
+import re
+from django.core.exceptions import ValidationError
+
+def valida_cpf(value):
+    if not re.match(r'^\d{11}$', value):
+        raise ValidationError('O CPF deve conter exatamente 11 dígitos e somente números.')
 
 class Alunos(models.Model):
     id_aluno = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=255)
-    cpf = models.CharField(max_length=11, unique=True)
+    cpf = models.CharField(max_length=11, unique=True, validators=[valida_cpf])
     rg = models.CharField(max_length=8, unique=True)
     matricula = models.CharField(max_length=8, unique=True)
     telefone = models.CharField(max_length=11)
@@ -112,7 +118,7 @@ class DisciplinaAluno(models.Model):
     id_matricula = models.AutoField(primary_key=True)
     id_aluno = models.ForeignKey("backend.Alunos", on_delete=models.CASCADE)
     id_disciplina = models.ForeignKey("backend.Disciplinas", on_delete=models.CASCADE)
-    nota = models.FloatField(default=0.0, null=True, blank=True, editable=False) 
+    nota = models.FloatField(default=0.0, editable=False) 
 
     class Meta:
         db_table = "DisciplinaAluno"

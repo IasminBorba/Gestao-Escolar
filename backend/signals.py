@@ -1,6 +1,6 @@
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
-from .models import AtividadeAluno, DisciplinaAluno
+from .models import AtividadeAluno, DisciplinaAluno, Alunos
 
 @receiver(post_save, sender=AtividadeAluno)
 def adiciona_atividade(sender, instance, **kwargs):
